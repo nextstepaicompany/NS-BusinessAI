@@ -2,58 +2,100 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Generador de Contenido IA</title>
+  <title>Generador de Contenido con IA</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       padding: 40px;
     }
+
     .container {
       max-width: 600px;
       margin: auto;
       background: white;
-      padding: 30px;
-      border-radius: 8px;
-      text-align: center;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
     label {
       display: block;
-      margin-top: 15px;
-      text-align: left;
+      margin-top: 18px;
+      font-weight: 600;
+      color: #444;
     }
-    input, select, button {
+
+    input, select {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
     }
+
     button {
-      margin-top: 20px;
-      background: #4CAF50;
+      margin-top: 25px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
+
     button:hover {
-      background: #45a049;
+      transform: scale(1.03);
     }
+
     #cola {
       display: none;
-      margin-top: 20px;
+    }
+
+    .loader {
+      margin: 20px auto;
+      border: 6px solid #eee;
+      border-top: 6px solid #764ba2;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- FORMULARIO -->
   <div class="container" id="formulario">
     <h1>Generador de Contenido con IA</h1>
-    <p>Crea textos e imágenes publicitarias para tu negocio.</p>
+    <p>Crea textos e imágenes publicitarias para cualquier negocio</p>
 
     <label>Tipo de negocio</label>
-    <input type="text">
+    <input type="text" placeholder="Ej: restaurante, tienda, servicios">
 
     <label>Producto o servicio</label>
-    <input type="text">
+    <input type="text" placeholder="Ej: hamburguesas, asesoría, ropa">
 
     <label>Objetivo</label>
     <select>
@@ -80,10 +122,12 @@
     <button onclick="entrarCola()">Generar contenido</button>
   </div>
 
+  <!-- COLA -->
   <div class="container" id="cola">
     <h2>Estás en cola ⏳</h2>
     <p id="mensajeCola"></p>
-    <p>Tiempo estimado: <span id="tiempo">60</span> segundos</p>
+    <div class="loader"></div>
+    <p>Tiempo estimado: <strong><span id="tiempo">60</span></strong> segundos</p>
   </div>
 
   <script>
@@ -99,10 +143,11 @@
       let intervalo = setInterval(() => {
         tiempo--;
         document.getElementById("tiempo").innerText = tiempo;
+
         if (tiempo <= 0) {
           clearInterval(intervalo);
           document.getElementById("mensajeCola").innerText =
-            "Generando contenido...";
+            "Generando contenido con IA...";
         }
       }, 1000);
     }
@@ -110,4 +155,3 @@
 
 </body>
 </html>
-
