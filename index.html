@@ -86,26 +86,25 @@
 
 <body>
 
-  <!-- FORMULARIO -->
   <div class="container" id="formulario">
     <h1>Generador de Contenido con IA</h1>
     <p>Crea textos e imágenes publicitarias para cualquier negocio</p>
 
     <label>Tipo de negocio</label>
-    <input type="text" placeholder="Ej: restaurante, tienda, servicios">
+    <input id="tipoNegocio" type="text">
 
     <label>Producto o servicio</label>
-    <input type="text" placeholder="Ej: hamburguesas, asesoría, ropa">
+    <input id="producto" type="text">
 
     <label>Objetivo</label>
-    <select>
+    <select id="objetivo">
       <option>Vender</option>
       <option>Promocionar</option>
       <option>Informar</option>
     </select>
 
     <label>Red social</label>
-    <select>
+    <select id="red">
       <option>Instagram</option>
       <option>Facebook</option>
       <option>TikTok</option>
@@ -113,7 +112,7 @@
     </select>
 
     <label>Tono</label>
-    <select>
+    <select id="tono">
       <option>Profesional</option>
       <option>Cercano</option>
       <option>Divertido</option>
@@ -122,7 +121,6 @@
     <button onclick="entrarCola()">Generar contenido</button>
   </div>
 
-  <!-- COLA -->
   <div class="container" id="cola">
     <h2>Estás en cola ⏳</h2>
     <p id="mensajeCola"></p>
@@ -130,28 +128,7 @@
     <p>Tiempo estimado: <strong><span id="tiempo">60</span></strong> segundos</p>
   </div>
 
-  <script>
-    function entrarCola() {
-      document.getElementById("formulario").style.display = "none";
-      document.getElementById("cola").style.display = "block";
-
-      let personas = Math.floor(Math.random() * 5) + 1;
-      document.getElementById("mensajeCola").innerText =
-        "Hay " + personas + " personas delante de ti";
-
-      let tiempo = 60;
-      let intervalo = setInterval(() => {
-        tiempo--;
-        document.getElementById("tiempo").innerText = tiempo;
-
-        if (tiempo <= 0) {
-          clearInterval(intervalo);
-          document.getElementById("mensajeCola").innerText =
-            "Generando contenido con IA...";
-        }
-      }, 1000);
-    }
-  </script>
-
+  <script src="js/app.js"></script>
 </body>
 </html>
+
